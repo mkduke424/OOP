@@ -29,11 +29,18 @@ class Board
     print "Make your move #{name}: "
     space = gets.chomp.to_i
     arr_board_spaces[arr_board_spaces.index(space)] = piece
-    if check_for_winner?(piece)
+
+
+    if !check_for_winner?(piece)
       puts board + "\n"
-    else 
-      puts name + "won"
-      "won"
+      puts name + " won!!!!"
+      "exit"
+    elsif arr_board_spaces.all? {|a| a.class == String}
+    puts board + "\n"
+    puts" Looks like it's a Tie!!!"
+    "exit"
+    else
+      puts board + "\n"
     end
   end
 
@@ -64,15 +71,11 @@ player2 = Player.new(gets.chomp, 'y')
 board1 = Board.new
 puts board1.board
 
-no_winner = true
-
-while no_winner
-  if board1.take_turn(player1.name, player1.piece) == "won"
-    break
-  end
-  if board1.take_turn(player2.name, player2.piece) == "won"
-    break
+loop do
+  begin
+  break if board1.take_turn(player1.name, player1.piece) == 'exit'
+  break if board1.take_turn(player2.name, player2.piece) == 'exit'
+  rescue
+    puts "Wrong input bud :( try again"
   end
 end
-  
-
