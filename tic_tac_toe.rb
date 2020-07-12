@@ -10,7 +10,6 @@ class Player
   end
 end
 
-# Board class that allows the user to play rounds and and checkfor/announnce winners.
 class Board
   attr_accessor :arr_board_spaces
 
@@ -60,14 +59,11 @@ class Board
   end
 end
 
+print 'Player 1:X Whats your name: '
+player1 = Player.new(gets.chomp, 'X')
+print "Player 2:O What's your name: "
+player2 = Player.new(gets.chomp, 'O')
 
-print 'Player 1:x Whats your name: '
-player1 = Player.new(gets.chomp, 'x')
-print "Player 2:y What's your name: "
-player2 = Player.new(gets.chomp, 'y')
-
-# continuous loop to play until there is a winner 
-# player 1 play -> display board -> check for winner -> player 2 play -> display board -> check for winner -> if winner display winner -> exit loop 
 board1 = Board.new
 puts board1.board
 
